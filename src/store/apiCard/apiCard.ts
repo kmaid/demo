@@ -4,6 +4,7 @@ import {
   ApiCardState,
   SEND_REQUEST,
   RECEIVE_RESPONSE,
+  Status,
 } from "./types";
 
 const initialState: Dictionary<ApiCardState> = {};
@@ -16,7 +17,10 @@ export function apiCardReducer(
     case SEND_REQUEST:
       return {
         ...state,
-        [action.payload.id]: { ...action.payload },
+        [action.payload.id]: {
+          ...action.payload,
+          status: Status.PENDING,
+        },
       };
 
     case RECEIVE_RESPONSE:

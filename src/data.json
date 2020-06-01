@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "url": "http://www.mocky.io/v2/5ed568d03300000a2cf7aa13?mocky-delay=1000ms",
+    "url": "http://www.mocky.io/v2/5ed56b5b3400002d0006d2a3?mocky-delay=1000ms",
     "text": "1 second"
   },
   {
     "id": 2,
-    "url": "http://www.mocky.io/v2/5ed568d03300000a2cf7aa13?mocky-delay=2000ms",
+    "url": "http://www.mocky.io/v2/5ed56b5b3400002d0006d2a3?mocky-delay=2000ms",
     "text": "2 second"
   },
   {
     "id": 3,
-    "url": "http://www.mocky.io/v2/5ed568d03300000a2cf7aa13?mocky-delay=3000ms",
+    "url": "http://www.mocky.io/v2/5ed56b5b3400002d0006d2a3?mocky-delay=3000ms",
     "text": "3 second"
   },
   {

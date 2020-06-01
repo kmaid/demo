@@ -5,8 +5,13 @@ export interface Dictionary<T> {
   [id: number]: T;
 }
 
+export enum Status {
+  "PENDING",
+  "SUCCESS",
+}
+
 export interface ApiCardState {
-  status?: "PENDING" | "SUCCESS";
+  status?: Status;
   message?: string;
   url: string;
 }

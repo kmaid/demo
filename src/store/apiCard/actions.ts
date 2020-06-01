@@ -1,17 +1,36 @@
-import { SEND_REQUEST, RECEIVE_RESPONSE, ApiCardActionTypes } from "./types";
+import {
+  SEND_REQUEST as START_REQUEST,
+  RECEIVE_RESPONSE,
+  ApiCardActionTypes,
+} from "./types";
+import { ThunkAction } from "redux-thunk";
+import { Action } from "redux";
+import { RootState } from "..";
 
-// TypeScript infers that this function is returning SendMessageAction
-export function sendRequest(id: number, url: string): ApiCardActionTypes {
+export function startRequest(id: number, url: string): ApiCardActionTypes {
   return {
-    type: SEND_REQUEST,
+    type: START_REQUEST,
     payload: {
       id,
       url,
     },
   };
 }
+export const makeRequest = (
+  id: number,
+  url: string
+): ThunkAction<void, RootState, unknown, Action<string>> => async (
+  dispatch: Function
+) => {
+  console.log("hit");
+  await fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
+      debugger;
+      dispatch(receiveResponse(id, json.message));
+    });
+};
 
-// TypeScript infers that this function is returning DeleteMessageAction
 export function receiveResponse(
   id: number,
   message: string
