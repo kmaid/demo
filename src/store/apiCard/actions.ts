@@ -22,11 +22,9 @@ export const makeRequest = (
 ): ThunkAction<void, RootState, unknown, Action<string>> => async (
   dispatch: Function
 ) => {
-  console.log("hit");
   await fetch(url)
     .then((response) => response.json())
     .then((json) => {
-      debugger;
       dispatch(receiveResponse(id, json.message));
     });
 };

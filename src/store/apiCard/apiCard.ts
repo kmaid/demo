@@ -26,7 +26,11 @@ export function apiCardReducer(
     case RECEIVE_RESPONSE:
       return {
         ...state,
-        ...action.payload,
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          ...action.payload,
+          status: Status.SUCCESS,
+        },
       };
     default:
       return state;
