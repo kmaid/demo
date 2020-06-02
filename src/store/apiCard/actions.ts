@@ -7,6 +7,10 @@ import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
 import { RootState } from "..";
 
+interface apiResponse {
+  message: string;
+}
+
 export function startRequest(id: number, url: string): ApiCardActionTypes {
   return {
     type: START_REQUEST,
@@ -24,9 +28,7 @@ export const makeRequest = (
 ) => {
   await fetch(url)
     .then((response) => response.json())
-    .then((json) => {
-      dispatch(receiveResponse(id, json.message));
-    });
+    .then((json: apiResponse) => dispatch(receiveResponse(id, json.message)));
 };
 
 export function receiveResponse(

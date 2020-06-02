@@ -9,17 +9,18 @@ import {
   Theme,
   createStyles,
 } from "@material-ui/core";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { startRequest, makeRequest } from "../store/apiCard/actions";
 import { Status } from "../store/apiCard/types";
+import { RootState } from "../store";
 
-interface ApiCardProps {
+type ApiCardProps = {
   id: number;
   url: string;
   defaultText: string;
   message?: string;
   status?: Status;
-}
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const mapStateToProps = (state: any, ownProps: ApiCardProps) => {
+const mapStateToProps = (state: RootState, ownProps: ApiCardProps) => {
   if (state.apiCards && state.apiCards[ownProps.id]) {
     return {
       ...state,
@@ -43,16 +44,15 @@ const mapStateToProps = (state: any, ownProps: ApiCardProps) => {
   return state;
 };
 
-const mapDispatchToProps = { startRequest, makeRequest };
-
-function ApiCard(props: any) {
+function ApiCard(props: ApiCardProps) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const sendSlowRequest = () => {
-    props.startRequest(props.id, props.url);
-    props.makeRequest(props.id, props.url);
+    dispatch(startRequest(props.id, props.url));
+    dispatch(makeRequest(props.id, props.url));
   };
   return (
-    <Grid item xs={4} md={2}>
+    <Grid item xs={4} md={2} alignContent="center">
       <Paper>
         <Box p={2} pt={3}>
           <Button
@@ -72,4 +72,4 @@ function ApiCard(props: any) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ApiCard);
+export default connect(mapStateToProps)(ApiCard);

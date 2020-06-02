@@ -1,6 +1,6 @@
 import React from "react";
 import "./Layout.css";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Box } from "@material-ui/core";
 interface LayoutProps {}
 
 export function Layout(props: React.PropsWithChildren<LayoutProps>) {
@@ -14,7 +14,9 @@ export function Layout(props: React.PropsWithChildren<LayoutProps>) {
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <div className="Layout">{props.children}</div>
+      <div className="Layout">
+        <Box pt={3}>{props.children}</Box>
+      </div>
     </>
   );
 }
