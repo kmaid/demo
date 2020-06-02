@@ -1,10 +1,8 @@
 export const SEND_REQUEST = "SEND_REQUEST";
 export const RECEIVE_RESPONSE = "RECEIVE_RESPONSE";
-
 export interface Dictionary<T> {
   [id: number]: T;
 }
-
 export enum Status {
   "PENDING",
   "SUCCESS",

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Router from "./AppRouter";
+import Router from "./App";
 
 test.skip("renders learn react link", () => {
   const { getByText } = render(<Router />);

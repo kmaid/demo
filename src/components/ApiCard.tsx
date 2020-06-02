@@ -52,7 +52,7 @@ function ApiCard(props: ApiCardProps) {
     dispatch(makeRequest(props.id, props.url));
   };
   return (
-    <Grid item xs={4} md={2} alignContent="center">
+    <Grid item xs={4} md={2}>
       <Paper>
         <Box p={2} pt={3}>
           <Button
